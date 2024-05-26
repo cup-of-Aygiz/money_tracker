@@ -8,12 +8,10 @@ class AnalyticsChartAndTitle extends StatelessWidget {
     super.key,
     required this.title,
     required this.child,
-    this.aspectRatio = 1,
   });
 
   final String title;
   final Widget child;
-  final double? aspectRatio;
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +23,7 @@ class AnalyticsChartAndTitle extends StatelessWidget {
           style: AppTextStyle.defaultHeadline2,
         ),
         const Gap(16),
-        aspectRatio == null
-            ? child
-            : AspectRatio(aspectRatio: aspectRatio!, child: child),
+        child,
       ],
     );
   }

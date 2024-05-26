@@ -1,31 +1,65 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:money_tracker/app/domain/modal/transaction_entity/transaction_entity.dart';
 import 'package:money_tracker/features/analytics/analytics_utils.dart';
+import 'package:money_tracker/features/analytics/components/not_enough_analytics_data.dart';
 import 'package:money_tracker/uikit/colors/app_colors.dart';
+import 'package:money_tracker/utils/date_time/date_time_utils.dart';
 
 class AnalyticsByWeek extends StatelessWidget {
-  const AnalyticsByWeek({super.key, required this.transactions});
+  const AnalyticsByWeek({
+    super.key,
+    required this.transactions,
+    required this.aspectRatio,
+  });
 
   final List<TransactionEntity> transactions;
+  final double aspectRatio;
 
   @override
   Widget build(BuildContext context) {
-    return BarChart(
-      BarChartData(
-        alignment: BarChartAlignment.spaceAround,
-        maxY: AnalyticsUtils.calculateMaxAmountByDate(
-          days: 7,
-          transactions: transactions,
-        ),
-        barGroups: _getBarGroups(7),
-        barTouchData: BarTouchData(
-            touchTooltipData: BarTouchTooltipData(
-          getTooltipColor: (_) => AppColors.black,
-        )),
-        titlesData: const FlTitlesData(
-          topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-          leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+    final maxY = AnalyticsUtils.calculateMaxAmountByDate(
+      days: 7,
+      transactions: transactions,
+    );
+    if (maxY == 0) {
+      return const NotEnoughAnalyticsData();
+    }
+    return AspectRatio(
+      aspectRatio: aspectRatio,
+      child: BarChart(
+        BarChartData(
+          alignment: BarChartAlignment.spaceAround,
+          maxY: AnalyticsUtils.calculateMaxAmountByDate(
+            days: 7,
+            transactions: transactions,
+          ),
+          barGroups: _getBarGroups(7),
+          barTouchData: BarTouchData(
+              touchTooltipData: BarTouchTooltipData(
+            getTooltipColor: (_) => AppColors.black,
+          )),
+          titlesData: FlTitlesData(
+            topTitles:
+                const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+            leftTitles:
+                const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+            bottomTitles: AxisTitles(
+              sideTitles: SideTitles(
+                showTitles: true,
+                getTitlesWidget: (value, _) {
+                  DateTime date = DateTime.now()
+                      .subtract(Duration(days: (6 - value).toInt()));
+                  return Text(
+                    DateFormat(FormatDate.month).format(
+                      date,
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
         ),
       ),
     );

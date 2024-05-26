@@ -95,6 +95,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "listTransactionsIsEmpty":
             MessageLookupByLibrary.simpleMessage("Список транзакций пуст"),
         "miscellaneous": MessageLookupByLibrary.simpleMessage("Прочее"),
+        "notEnoughAnalyticsData": MessageLookupByLibrary.simpleMessage(
+            "Недостаточно данных для аналитики"),
         "requiredField":
             MessageLookupByLibrary.simpleMessage("Обязательное поле"),
         "salary": MessageLookupByLibrary.simpleMessage("Заработная плата"),

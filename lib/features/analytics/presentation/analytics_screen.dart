@@ -37,8 +37,8 @@ class AnalyticsScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 16),
                 child: AnalyticsChartAndTitle(
                   title: context.locale.analyticsAllTime,
-                  aspectRatio: 2,
                   child: AnalyticsByAllTime(
+                    aspectRatio: 2,
                     transactions: state.transactionsList,
                   ),
                 ),
@@ -49,6 +49,7 @@ class AnalyticsScreen extends StatelessWidget {
                 child: AnalyticsChartAndTitle(
                   title: context.locale.analyticsYear,
                   child: AnalyticsByYear(
+                    aspectRatio: 1,
                     transactions: state.transactionsList,
                   ),
                 ),
@@ -59,6 +60,7 @@ class AnalyticsScreen extends StatelessWidget {
                 child: AnalyticsChartAndTitle(
                   title: context.locale.analyticsWeek,
                   child: AnalyticsByWeek(
+                    aspectRatio: 1,
                     transactions: state.transactionsList,
                   ),
                 ),
@@ -68,7 +70,6 @@ class AnalyticsScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 16),
                 child: AnalyticsChartAndTitle(
                   title: context.locale.analyticsAllExpenses,
-                  aspectRatio: null,
                   child: ChartWidget(
                     type: TransactionType.expense,
                     transactions: state.transactionsList,
@@ -80,7 +81,6 @@ class AnalyticsScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 16),
                 child: AnalyticsChartAndTitle(
                   title: context.locale.analyticsAllIncomes,
-                  aspectRatio: null,
                   child: ChartWidget(
                     type: TransactionType.income,
                     transactions: state.transactionsList,

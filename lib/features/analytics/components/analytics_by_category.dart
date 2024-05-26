@@ -6,6 +6,7 @@ import 'package:gap/gap.dart';
 import 'package:money_tracker/app/domain/modal/transaction_category/transaction_category_entity.dart';
 import 'package:money_tracker/app/domain/modal/transaction_entity/transaction_entity.dart';
 import 'package:money_tracker/features/analytics/analytics_utils.dart';
+import 'package:money_tracker/features/analytics/components/not_enough_analytics_data.dart';
 import 'package:money_tracker/features/home/presentation/components/transaction_filter/category_indicator.dart';
 
 class ChartWidget extends StatelessWidget {
@@ -28,7 +29,9 @@ class ChartWidget extends StatelessWidget {
     final barGroups = _createBarGroups(groupedTransactions);
     List<TransactionCategoryEntity> categoryNames =
         groupedTransactions.keys.map((category) => category).toList();
-
+    if (barGroups.isEmpty || barGroups.length == 1) {
+      return const NotEnoughAnalyticsData();
+    }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -46,6 +49,8 @@ class ChartWidget extends StatelessWidget {
                 enabled: false,
               ),
               titlesData: FlTitlesData(
+                topTitles:
+                    const AxisTitles(sideTitles: SideTitles(showTitles: false)),
                 bottomTitles: AxisTitles(
                   sideTitles: SideTitles(
                     showTitles: true,

@@ -63,5 +63,6 @@
   "transactionUpdated": "Транзакция \"{name}\" изменена",
   "limitAdded": "Лимит по категории \"{name}\" добавлен",
   "limitUpdated": "Лимит по категории \"{name}\" изменен",
-  "limitDelete": "Лимит по категории \"{name}\" удален"
+  "limitDelete": "Лимит по категории \"{name}\" удален",
+  "notEnoughAnalyticsData": "Недостаточно данных для аналитики"
 }

@@ -690,6 +690,16 @@ class GeneratedLocalization {
       args: [name],
     );
   }
+
+  /// `Недостаточно данных для аналитики`
+  String get notEnoughAnalyticsData {
+    return Intl.message(
+      'Недостаточно данных для аналитики',
+      name: 'notEnoughAnalyticsData',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate
