@@ -1,4 +1,5 @@
-![telegram-cloud-photo-size-2-5375265194760069128-y](https://github.com/cup-of-Aygiz/money_tracker/assets/55996397/6593404f-b17a-4718-a5b7-55c31fe047af)1) Созданы экраны для добавления новых транзакций. Добавленные транзакции сохраняются в приложении.
+1) Созданы экраны для добавления новых транзакций. Добавленные транзакции сохраняются в приложении.
+![telegram-cloud-photo-size-2-5375265194760069128-y](https://github.com/cup-of-Aygiz/money_tracker/assets/55996397/6593404f-b17a-4718-a5b7-55c31fe047af)
 ![telegram-cloud-photo-size-2-5375265194760069113-y](https://github.com/cup-of-Aygiz/money_tracker/assets/55996397/99abcc32-ed8f-4bee-9b82-a947557089bc)
 2) Разработан экран, который отображает список всех добавленных пользователем транзакций
 ![telegram-cloud-photo-size-2-5375265194760069107-y](https://github.com/cup-of-Aygiz/money_tracker/assets/55996397/797956c9-447f-4ff4-bc25-dcb8461d4387)
