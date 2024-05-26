@@ -17,6 +17,6 @@ final ThemeData darkThemeData = ThemeData(
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     backgroundColor: AppColors.onyx10,
     selectedItemColor: AppColors.white,
-    unselectedItemColor: AppColors.black,
+    unselectedItemColor: AppColors.onyx60,
   ),
 );

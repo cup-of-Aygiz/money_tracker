@@ -111,6 +111,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                                   locator
                                       .get<MoneyTrackerStore>()
                                       .addedTransaction(_transactionEntity);
+                                  setState(() {});
                                 }
                               },
                             );

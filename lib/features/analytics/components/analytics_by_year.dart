@@ -23,7 +23,9 @@ class AnalyticsByYear extends StatelessWidget {
   Widget build(BuildContext context) {
     final maxY = AnalyticsUtils.calculateMaxAmountByDate(
         days: 365, transactions: transactions);
-    if (maxY == 0) {
+    if (maxY == 0 ||
+        (_hasDifferentData(TransactionType.income) ||
+            _hasDifferentData(TransactionType.expense))) {
       return const NotEnoughAnalyticsData();
     }
     return AspectRatio(
@@ -66,10 +68,12 @@ class AnalyticsByYear extends StatelessWidget {
                   .difference(DateTime(DateTime.now().year, 1, 1))
                   .inDays
                   .toDouble() +
-              2,
+              4,
           minX: transactions.isEmpty
               ? 1
               : transactions
+                  .where((transaction) => DateTime(DateTime.now().year, 1, 1)
+                      .isBefore(transaction.date))
                   .map((transaction) => transaction.date)
                   .reduce((min, date) => date.isBefore(min) ? date : min)
                   .difference(DateTime(DateTime.now().year, 1, 1))
@@ -135,5 +139,16 @@ class AnalyticsByYear extends StatelessWidget {
       spots.add(FlSpot(key.toDouble(), value));
     });
     return spots;
+  }
+
+  bool _hasDifferentData(TransactionType type) {
+    return transactions
+            .where((transaction) => transaction.type == type)
+            .map((transaction) => transaction.date)
+            .where((date) => DateTime(DateTime.now().year, 1, 1).isBefore(date))
+            .map((e) => DateTime(e.year, e.month, e.day))
+            .toSet()
+            .length <
+        2;
   }
 }

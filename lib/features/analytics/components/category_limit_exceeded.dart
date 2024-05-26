@@ -18,26 +18,33 @@ class CategoryLimitExceeded extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MoneyTrackerStore, MoneyTrackerState>(
       builder: (context, state) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              '${context.locale.budgetLimits}:',
-              style: AppTextStyle.defaultHeadline2,
-            ),
-            const Gap(16),
-            Column(
-              children: [
-                for (var item in state.categoriesWithAmount) ...[
-                  _LimitCategoryTile(
-                    key: ValueKey(item.key),
-                    categoryEntity: item,
-                  ),
-                  const Gap(8)
+        if (state.categoriesWithAmount.isEmpty) {
+          return const SizedBox.shrink();
+        }
+        return Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '${context.locale.budgetLimits}:',
+                style: AppTextStyle.defaultHeadline2,
+              ),
+              const Gap(16),
+              Column(
+                children: [
+                  for (var item in state.categoriesWithAmount) ...[
+                    _LimitCategoryTile(
+                      key: ValueKey(item.key),
+                      categoryEntity: item,
+                    ),
+                    const Gap(8)
+                  ],
                 ],
-              ],
-            ),
-          ],
+              ),
+              const Gap(16),
+            ],
+          ),
         );
       },
     );

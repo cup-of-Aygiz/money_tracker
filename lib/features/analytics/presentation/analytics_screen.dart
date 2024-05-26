@@ -28,11 +28,7 @@ class AnalyticsScreen extends StatelessWidget {
           body: ListView(
             children: [
               const Gap(32),
-              const Padding(
-                padding: EdgeInsets.all(16),
-                child: CategoryLimitExceeded(),
-              ),
-              const Gap(16),
+              const CategoryLimitExceeded(),
               Padding(
                 padding: const EdgeInsets.only(left: 16),
                 child: AnalyticsChartAndTitle(

@@ -66,6 +66,8 @@ dev_dependencies:
 
   intl_utils: 2.8.5
   freezed: 2.5.2
+  flutter_native_splash: 2.4.0
+  flutter_launcher_icons: 0.13.1
 
 flutter:
   uses-material-design: true
@@ -74,6 +76,7 @@ flutter:
   assets:
     - assets/icons/transaction_category/
     - assets/icons/
+    - assets/png/
 
   fonts:
     - family: Gilroy
@@ -108,3 +111,12 @@ flutter_intl:
   main_locale: ru
   arb_dir: lib/localization/translations
   output_dir: lib/localization/generated
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/png/money_tracker_logo.png"
+
+flutter_native_splash:
+  color: "#121212"
+  image: assets/png/money_tracker_logo.png
